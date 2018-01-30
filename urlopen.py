@@ -14,11 +14,15 @@ def main(args):
     videourls = ["youtube.com", "youtu.be", "streamable.com"];
     pdf = ["pdf"]; pdfapp = ["mupdf"];
     defaultapp = ["/home/daniel_j/compiled/waterfox/waterfox"];
+    defaultforcedurls = ["slack.com"]
     x = 0;
     for each in args:
         parsed_uri = urlparse(each);
         domain = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri);
-        if (each.endswith(tuple(images))):
+        if (any (s in domain for s in defaultforcedurls)):
+                print("running with forced default application {}".format(each));
+                run(defaultapp, each);
+        elif (each.endswith(tuple(images))):
                 print("image {}".format(each));
                 run(imageapp, each);
         elif (each.endswith(tuple(videos))):
