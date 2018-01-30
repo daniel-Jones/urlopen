@@ -15,8 +15,8 @@ def main(args):
     defaultapp = ["/home/daniel_j/compiled/waterfox/waterfox"];
     x = 0;
     for each in args:
-        parsed_uri = urlparse(each)
-        domain = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri)
+        parsed_uri = urlparse(each);
+        domain = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri);
         if (each.endswith(tuple(images))):
                 print("image {}".format(each));
                 run(imageapp, each);
