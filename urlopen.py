@@ -14,7 +14,7 @@ def main(args):
     videourls = ["youtube.com", "youtu.be", "streamable.com"];
     pdf = ["pdf"]; pdfapp = ["mupdf"];
     defaultapp = ["/home/daniel_j/compiled/waterfox/waterfox"];
-    defaultforcedurls = ["slack.com"]
+    defaultforcedurls = ["slack.com"];
     x = 0;
     for each in args:
         parsed_uri = urlparse(each);
@@ -40,5 +40,5 @@ def main(args):
         x += 1;
 
 if __name__ == "__main__":
-    if sys.argv > 0:
+    if sys.argv > 1:
         main(sys.argv[1:]);
