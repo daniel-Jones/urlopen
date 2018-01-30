@@ -1,6 +1,6 @@
 #!/usr/bin/env python2.7
 import sys, os;
-
+from urlparse import urlparse;
 def run(process, arg):
     L = [];
     for each in process:
@@ -10,11 +10,13 @@ def run(process, arg):
 
 def main(args):
     images = ["jpg", "png"]; imageapp = ["feh"];
-    videos = ["gif", "webm", "mp4"]; videoapp = ["mpv", "--loop"];
+    videos = ["gif", "gifv", "webm", "mp4"]; videoapp = ["mpv", "--loop"];
     pdf = ["pdf"]; pdfapp = ["mupdf"];
     defaultapp = ["/home/daniel_j/compiled/waterfox/waterfox"];
     x = 0;
     for each in args:
+        parsed_uri = urlparse(each)
+        domain = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri)
         if (each.endswith(tuple(images))):
                 print("image {}".format(each));
                 run(imageapp, each);
@@ -24,6 +26,9 @@ def main(args):
         elif (each.endswith(tuple(pdf))):
                 print("pdf {}".format(each));
                 run(pdfapp, each);
+        elif ("youtube.com" or "youtu.be" in domain):
+                print("video {}".format(each));
+                run(videoapp, each);
         else:
             print("running with default application {}".format(each));
             run(defaultapp, each);
