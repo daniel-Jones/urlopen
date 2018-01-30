@@ -11,6 +11,7 @@ def run(process, arg):
 def main(args):
     images = ["jpg", "png"]; imageapp = ["feh"];
     videos = ["gif", "gifv", "webm", "mp4"]; videoapp = ["mpv", "--loop"];
+    videourls = ["youtube.com", "youtu.be", "streamable.com"];
     pdf = ["pdf"]; pdfapp = ["mupdf"];
     defaultapp = ["/home/daniel_j/compiled/waterfox/waterfox"];
     x = 0;
@@ -26,7 +27,7 @@ def main(args):
         elif (each.endswith(tuple(pdf))):
                 print("pdf {}".format(each));
                 run(pdfapp, each);
-        elif ("youtube.com" or "youtu.be" in domain):
+        elif (any(s in domain for s in videourls)):
                 print("video {}".format(each));
                 run(videoapp, each);
         else:
