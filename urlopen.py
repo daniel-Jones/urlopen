@@ -22,13 +22,13 @@ def main(args):
         if (any (s in domain for s in defaultforcedurls)):
                 print("running with forced default application {}".format(each));
                 run(defaultapp, each);
-        elif (each.endswith(tuple(images))):
+        elif (each.lower().endswith(tuple(images))):
                 print("image {}".format(each));
                 run(imageapp, each);
-        elif (each.endswith(tuple(videos))):
+        elif (each.lower().endswith(tuple(videos))):
                 print("video {}".format(each));
                 run(videoapp, each);
-        elif (each.endswith(tuple(pdf))):
+        elif (each.lower().endswith(tuple(pdf))):
                 print("pdf {}".format(each));
                 run(pdfapp, each);
         elif (any(s in domain for s in videourls)):
