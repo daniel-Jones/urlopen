@@ -25,8 +25,8 @@ def run(process, arg):
     os.spawnvpe(os.P_NOWAIT, L[0], L, os.environ)
 
 def main(args):
-    images = ["jpg", "png"]; imageapp = ["feh"];
-    videos = ["gif", "gifv", "webm", "mp4"]; videoapp = ["mpv", "--ytdl-format=22", "--loop"]; #--yt-dlformat=22
+    images = ["jpg", "jpeg", "png"]; imageapp = ["feh"];
+    videos = ["gif", "gifv", "webm", "mp4"]; videoapp = ["mpv", "--loop"]; #--yt-dlformat=22
     videourls = ["youtube.com", "youtu.be", "streamable.com"];
     pdf = ["pdf"]; pdfapp = ["mupdf"];
     defaultapp = ["/home/daniel_j/compiled/waterfox/waterfox"];
